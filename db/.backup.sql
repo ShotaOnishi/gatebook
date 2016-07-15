@@ -1,0 +1,16 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE "schema_migrations" ("version" varchar NOT NULL);
+INSERT INTO "schema_migrations" VALUES('20160713232008');
+INSERT INTO "schema_migrations" VALUES('20160713232009');
+INSERT INTO "schema_migrations" VALUES('20160713232010');
+INSERT INTO "schema_migrations" VALUES('20160713232011');
+CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer);
+INSERT INTO "notes" VALUES(4,'sasa','dasd','2016-07-13 17:32:17.103846','2016-07-13 17:32:17.103846',1);
+CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image" varchar);
+INSERT INTO "users" VALUES(1,'ohnishi','showta.0804@gmail.com','2016-07-13 16:51:48.034935','2016-07-13 16:51:48.034935',NULL);
+DELETE FROM sqlite_sequence;
+INSERT INTO "sqlite_sequence" VALUES('notes',4);
+INSERT INTO "sqlite_sequence" VALUES('users',1);
+CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
+COMMIT;
